@@ -1,4 +1,4 @@
-# CMPLR-P1 for CS 4280 @ UMSL
+# CMPLR-P1 for CS 4280 @ UMSL - REUPLOADED TO GITHUB DUE TO MESSY CODE
 
 IMPLEMENTATION 3
 FSA Table is located inside the main directory with the entire program (fsa map.csv)
