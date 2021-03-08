@@ -273,7 +273,7 @@ static std::map<int, std::map<int,int>> fsa = {
         {123, 1002},
         {125, 1002}
     }},
-    {2, {//lowercase letter was recognized (id or keyword)
+    {4, {//$ was recognized
         { -1, 1001},
         {  9, 1001},
         { 10, 1001},
@@ -543,7 +543,7 @@ static std::map<int, std::map<int,int>> fsa = {
         {123, 1003},
         {125, 1003}
     }},
-    {7, { //< recognized (< or <=)
+    {7, { //< recognized (< or =<)
         { -1, 1003},
         {  9, 1003},
         { 10, 1003},
@@ -633,7 +633,7 @@ static std::map<int, std::map<int,int>> fsa = {
         {123, 1003},
         {125, 1003}
     }},
-    {8, { //> recognized (> or >=)
+    {8, { //> recognized (> or =>)
         { -1, 1003},
         {  9, 1003},
         { 10, 1003},
