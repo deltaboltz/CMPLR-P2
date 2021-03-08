@@ -1,0 +1,1 @@
+while _token (token=scanner() != eofTk()
