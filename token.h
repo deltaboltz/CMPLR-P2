@@ -3,7 +3,7 @@
 #include <map>
 
 enum tokenID {
-    null=-1,
+	null=-1,
     error=0,
     identifier=1001,
     integer=1002,
