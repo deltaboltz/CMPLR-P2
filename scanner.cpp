@@ -109,7 +109,7 @@ token scan(std::istream& in)
     {
         case -1:
           t = token(error, "no valid token begins with '" + e + "'", erpos, size);
-          cout << t.toString() << "\n"
+          cout << t.toString() << "\n";
           exit(-1);
           break;
 
