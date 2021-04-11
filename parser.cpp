@@ -51,7 +51,13 @@ static node<std::string> Program()
   node<std::string> root("<program>");
 
   root.insert(Vars());
-  root.insert(Block());
+
+  if(t.id == keyword && !t.instance.compare("main"))
+  {
+    root.insert(t);
+    t = scan(in);
+    root.insert(Block());
+  }
 
   return root;
 }
@@ -74,9 +80,9 @@ static node<std::string> Block()
       t = scan(in);
       return root;
     }
-    parseErr("kwTK: 'stop'");
+    parseErr("kwTK: 'end'");
   }
-  parseErr("kwTK: 'start'");
+  parseErr("kwTK: 'begin'");
   return root;
 }
 
