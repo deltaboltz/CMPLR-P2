@@ -54,13 +54,13 @@ std::string node<T>::toString()
 }
 
 template <class T>
-node<T>::insert(node<T> child)
+void node<T>::insert(node<T> child)
 {
   childrenT.push_back(child);
 }
 
 template <class T>
-node<T>::insert(token childToken)
+void node<T>::insert(token childToken)
 {
   tokensT.push_back(childToken);
 }
