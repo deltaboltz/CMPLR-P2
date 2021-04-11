@@ -20,7 +20,7 @@ public:
   node<T> (T key);
   std::string toString();
   void insert(node<T> child);
-  void insert(token childToken)
+  void insert(token childToken);
 
   void preOrder();
   void preOrder(std::ostream& out);
