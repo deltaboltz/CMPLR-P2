@@ -7,6 +7,9 @@
 
 using namespace std;
 
+static int lineNum = 1;
+static int charNum = 1;
+
 tokenID filterKeyword(std::string cap)
 {
   if (cap == "begin") return keyword;
