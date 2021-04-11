@@ -8,7 +8,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "testScanner.h"
+#include "parser.h"
+#include "node.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ int main(int argc, char* argv[])
 {
   if(argc == 1)
   {
-    testScan(cin);
+    node<std::string> root = parser(cin);
   }
   else if(argc == 2) //check to see if the file has the proper extension
   {
@@ -42,7 +43,7 @@ int main(int argc, char* argv[])
 
     if(fs)
     {
-      testScan(fs);
+      node<std::string> root = parser(fs);
     }
     else
     {
