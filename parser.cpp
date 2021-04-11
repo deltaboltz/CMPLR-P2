@@ -90,7 +90,7 @@ static node<std::string> Vars()
 {
   node<std::string> root("<vars>");
 
-  if(t.id == keyword && !t.instance.compare("var"))
+  if(t.id == keyword && !t.instance.compare("data"))
   {
     root.insert(t);
     t = scan(in);
