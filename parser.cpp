@@ -261,12 +261,12 @@ static node<std::string> Stat()
 {
   node<std::string> root("<stat>");
 
-  if(t.id == keyword && !t.instance.compare("in"))
+  if(t.id == keyword && !t.instance.compare("getter"))
   {
     root.insert(In());
     return root;
   }
-  else if(t.id == keyword && !t.instance.compare("out"))
+  else if(t.id == keyword && !t.instance.compare("outter"))
   {
     root.insert(Out());
     return root;
