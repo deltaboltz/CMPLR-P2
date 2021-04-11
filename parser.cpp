@@ -320,7 +320,13 @@ static node<std::string> In()
       t = scan(in);
       return root;
     }
-    parseErr("idTK");
+    else if(t.id == opordel && !t.instance.compare(";"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
+    parseErr("idTK or opTK");
   }
   parseErr("kwTK: 'getter'");
   return root;
