@@ -318,13 +318,13 @@ static node<std::string> In()
     {
       root.insert(t);
       t = scan(in);
-      return root;
-    }
-    else if(t.id == opordel && !t.instance.compare(";"))
-    {
-      root.insert(t);
-      t = scan(in);
-      return root;
+      if(t.id == opordel && !t.instance.compare(";"))
+      {
+        root.insert(t);
+        t = scan(in);
+        return root;
+      }
+      parseErr("opTK: ';'");
     }
     parseErr("idTK or opTK");
   }
