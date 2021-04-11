@@ -338,4 +338,195 @@ static node<std::string> Out()
 static node<std::string> If()
 {
   node<std::string> root("<if>");
+
+  if(t.id == keyword && !t.instance.compare("if"))
+  {
+    root.insert(t);
+    t = scan(in);
+
+    if(t.id == opordel && !t.instance.compare("["))
+    {
+      root.insert(t);
+      t = scan(in);
+
+      root.insert(Expr());
+      root.insert(R0());
+      root.insert(Expr());
+
+      if(t.id == opordel && !t.instance.compare("]"))
+      {
+        root.insert(t);
+        t = scan(in);
+        root.insert(Stat());
+        return root;
+      }
+      parseErr("opTK: ']'");
+    }
+    parseErr("opTK: '['");
+  }
+  parseErr("kwTK: 'if'");
+
+  return root;
+}
+
+static node<std::string> Loop()
+{
+  node<std::string> root("<loop>");
+
+  if(t.id == keyword && !t.instance.compare("loop"))
+  {
+    root.insert(t);
+    t = scan(in);
+
+    if(t.id == opordel && !t.instance.compare("["))
+    {
+      root.insert(t);
+      t = scan(in);
+
+      root.insert(Expr());
+      root.insert(R0());
+      root.insert(Expr());
+
+      if(t.id = opordel && !t.instance.compare("]"))
+      {
+        root.insert(t);
+        t = scan(in);
+
+        root.insert(Stat());
+        return root;
+      }
+      parseErr("opTK: ']'");
+    }
+    parseErr("opTK: '['");
+  }
+  parseErr("kwTK: 'loop'");
+  return root;
+}
+
+static node<std::string> Assign()
+{
+  node<std::string> root("<assign>");
+
+  if(t.id == identifier)
+  {
+    root.insert(t);
+    t = scan(in);
+
+    if(t.id == opordel && !t.instance.compare(":="))
+    {
+      root.insert(t);
+      t = scan(in);
+      root.insert(Expr());
+      return root;
+    }
+    parseErr("opTK: ':='");
+  }
+  parseErr("idTK");
+  return root;
+}
+
+static node<std::string> R0()
+{
+  node<std::string> root("<R0>");
+
+  if(t.id == opordel && !t.instance.compare("["))
+  {
+    root.insert(t);
+    t = scan(in);
+
+    if(t.id == opordel && !t.instance.compare("]"))
+    {
+      root.insert(t);
+      t = scan(in)
+      return root;
+    }
+    parseErr("opTK: ']'");
+  }
+  else if(t.id == opordel && !t.instance.compare("%"))
+  {
+    root.insert(t);
+    t = scan(in);
+    return root;
+  }
+  else if(t.id == opordel && !t.instance.compare("="))
+  {
+    root.insert(t);
+    t = scan(in);
+
+    if(t.id == opordel && !t.instance.compare(">"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
+    else if(t.id == opordel && !t.instance.compare("<"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
+    else if(t.id == opordel && !t.instance.compare("="))
+    {
+      root.insert(t);
+      t = scan(in)
+      return root;
+    }
+  }
+  parseErr("opTK: '=', '<', '>', '%'");
+  return root;
+}
+
+static node<std::string> Label()
+{
+  node<std::string> root("<label>");
+
+  if(t.id == keyword && !t.instance.compare("void"))
+  {
+    root.insert(t);
+    t = scan(in);
+
+    if(t.id == identifier)
+    {
+      root.insert(t);
+      t = scan(in);
+
+      return root;
+    }
+    parseErr("idTK");
+  }
+  parseErr("kwTK: 'void'");
+  return root;
+}
+
+static node<std::string> Goto()
+{
+  node<std::string> root("<goto>");
+
+  if(t.id = keywork && !t.instance.compare("proc"))
+  {
+    root.insert(t);
+
+    t = scan(in);
+
+    if(t.id == identifier)
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
+    parseErr("idTK");
+  }
+  parseErr("kwTK: 'proc'");
+  return root;
+}
+
+static void parseErr(std::string expected)
+{
+  cout << "\n PARSE ERR \n";
+
+  cout << "Line" << t.posString() << "  \"" << t.instance;
+
+  cout << "\" does not match the expected token : " << expected << ".\n";
+
+  exit(-1);
 }
