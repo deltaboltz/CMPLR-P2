@@ -76,7 +76,6 @@ static node<std::string> Block()
 
     if(t.id == keyword && !t.instance.compare("end"))
     {
-      cout << "test end" << endl;
       root.insert(t);
       t = scan(in);
       return root;
@@ -265,11 +264,23 @@ static node<std::string> Stat()
   if(t.id == keyword && !t.instance.compare("getter"))
   {
     root.insert(In());
+    if(t.id == opordel && !t.instance.compare(";"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
     return root;
   }
   else if(t.id == keyword && !t.instance.compare("outter"))
   {
     root.insert(Out());
+    if(t.id == opordel && !t.instance.compare(";"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
     return root;
   }
   else if(t.id == keyword && !t.instance.compare("block"))
@@ -280,26 +291,56 @@ static node<std::string> Stat()
   else if(t.id == keyword && !t.instance.compare("if"))
   {
     root.insert(If());
+    if(t.id == opordel && !t.instance.compare(";"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
     return root;
   }
   else if(t.id == keyword && !t.instance.compare("loop"))
   {
     root.insert(Loop());
+    if(t.id == opordel && !t.instance.compare(";"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
     return root;
   }
   else if(t.id == keyword && !t.instance.compare("assign"))
   {
     root.insert(Assign());
+    if(t.id == opordel && !t.instance.compare(";"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
     return root;
   }
   else if(t.id == keyword && !t.instance.compare("goto"))
   {
     root.insert(Goto());
+    if(t.id == opordel && !t.instance.compare(";"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
     return root;
   }
   else if(t.id == keyword && !t.instance.compare("label"))
   {
     root.insert(Label());
+    if(t.id == opordel && !t.instance.compare(";"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
     return root;
   }
 
@@ -319,14 +360,7 @@ static node<std::string> In()
     {
       root.insert(t);
       t = scan(in);
-      if(t.id == opordel && !t.instance.compare(";"))
-      {
-        root.insert(t);
-        t = scan(in);
-        cout << "test inside" << endl;
-        return root;
-      }
-      parseErr("opTK: ';'");
+      return root;
     }
     parseErr("idTK or opTK");
   }
