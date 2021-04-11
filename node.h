@@ -1,99 +1,90 @@
+
 #ifndef NODE_H
 #define NODE_H
 #include <set>
 #include <vector>
-
 #include "token.h"
 
 template <class T>
-class node
-{
-private:
+class node {
+  private:
+      std::vector<node<T>> children_;
+      std::vector<token> tokens_;
+      T key_;
+      void preHelper(std::ostream& out, std::string indent);
 
-  std::vector<node<T>> childrenT;
-  std::vector<node<T>> tokensT;
-  T keyT;
-
-  void preHelp(std::ostream& out, std::string indent);
-
-public:
-  node<T> (T key);
-  std::string toString();
-  void insert(node<T> child);
-  void insert(token childToken);
-
-  void preOrder();
-  void preOrder(std::ostream& out);
+  public:
+      // AST functionality
+      void insert(node<T> child);
+      void insert(token childToken);
+      node<T> (T key);
+      // traversal functionality
+      void preOrder(std::ostream& out);
+      void preOrder();
+      std::string toString();
 };
-
-
-template <class T>
-std::string node<T>::toString()
-{
-  if(tokensT.size() > 0)
-  {
-    std::string tokenStr("");
-    int i = 0;
-
-    for(int i = 0; i < tokensT.size() -1; i++)
-    {
-      tokenStr += tokensT[i].toString() + ", ";
-    }
-
-    tokenStr += tokensT[i].toString() + "\n";
-
-    return keyT + " Tokens: " + tokenStr;
-  }
-
-  return keyT + "\n";
-}
 
 template <class T>
 node<T>::node(T key)
 {
-  keyT = key;
+  key_ = key; // Initialize the node name
 }
-
 
 template <class T>
 void node<T>::insert(node<T> child)
 {
-  childrenT.push_back(child);
+  children_.push_back(child);
 }
 
 template <class T>
 void node<T>::insert(token childToken)
 {
-    tokensT.push_back(childToken);
+  tokens_.push_back(childToken);
 }
 
 template <class T>
-void node<T>::preHelp(std::ostream& out, std::string indent)
+std::string node<T>::toString()
 {
-  std::string newindent("      ");
-  newindent += indent;
-
-  out << indent << toString();
-
-  for(int i = 0; i < childrenT.size(); i++)
+if (tokens_.size() > 0)
   {
-    childrenT[i].preHelp(out, newindent);
+    std::string tokenStr("");
+    int i = 0;
+    while (i < tokens_.size()-1)
+    {
+      tokenStr += tokens_[i].toString() + ", ";
+      i++;
+    }
+    tokenStr += tokens_[i].toString() + "\n";
+    return key_ + "  Tokens: " + tokenStr;
   }
-
+  return key_ + "\n";
 }
 
-// Each traversal has a standard cout stream as well as an
-// overloaded function for ostream
 template <class T>
-void node<T>::preOrder()
+void node<T>::preHelper(std::ostream& out, std::string indent)
 {
-  preHelp(std::cout, "");
+  // helper for preOrder
+  std::string newdent("  ");
+  newdent += indent;
+  out << indent << toString();
+  for (int i = 0; i < children_.size(); i++)
+  {
+      children_[i].preHelper(out, newdent);
+  }
 }
 
+// traversal methods with variable ostream
 template <class T>
 void node<T>::preOrder(std::ostream& out)
 {
-  preHelp(out, "");
+  preHelper(out, "");
+}
+
+// traversal methods with default std::cout stream
+template <class T>
+void node<T>::preOrder()
+{
+  preHelper(std::cout, "");
 }
 
 #endif
