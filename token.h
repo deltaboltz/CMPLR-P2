@@ -31,7 +31,7 @@ struct token {
 
     token()
     {
-      id = NULL;
+      id = null;
       instance = "";
       pos = std::make_pair(0,0);
       size = std::make_pair(0,0);
