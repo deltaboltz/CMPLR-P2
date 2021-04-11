@@ -23,6 +23,12 @@ tokenID filterKeyword(std::string cap)
   if (cap == "assign") return keyword;
   if (cap == "data") return keyword;
   if (cap == "proc") return keyword;
+  if (cap == "stat") return keyword;
+  if (cap == "in") return keyword;
+  if (cap == "out") return keyword;
+  if (cap == "block") return keyword;
+  if (cap == "goto") return keyword;
+  if (cap == "label") return keyword;
 
   return identifier;
 }
