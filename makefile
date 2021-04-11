@@ -1,18 +1,18 @@
-CC=g++
-CFLAGS=-I.
+
+CC = g++
+CFLAGS = -I.
+OUTPUT = frontEnd
+CLEANCOMM = rm -f
 
 %.o: %.cpp
-	$(CC) -std=c++11 -c -o $@ $< $(CFLAGS)
+$(CC) -std=c++11 -c -o $@ $< $(CFLAGS)
 
-scanner: main.o testScanner.o scanner.o
-	$(CC) -std=c++11 -Wall -o scanner main.o testScanner.o scanner.o
+$(OUTPUT): main.o parser.o scanner.o
+	$(CC) -std=c++11 -Wall -o $(OUTPUT) main.o parser.o scanner.o
+	make clean
 
-winclean:
-	del /Q /S *.o
-
-linclean:
-	rm -f scanner
-	rm -f *.o
+clean:
+	$(CLEANCOMM) *.o
 
 run:
-	scanner input.fs19
+	$(OUTPUT) input.sp21
