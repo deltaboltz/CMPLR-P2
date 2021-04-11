@@ -104,8 +104,7 @@ static node<std::string> Vars()
       {
         root.insert(t);
         t = scan(in);
-
-        if(t.id == opordel && !t.instance.compare("=")
+        if(t.id == opordel && !t.instance.compare("="))
         {
           root.insert(t);
           t = scan(in)
