@@ -100,21 +100,28 @@ static node<std::string> Vars()
       root.insert(t);
       t = scan(in);
 
-      if(t.id == opordel && !t.instance.compare(":="))
+      if(t.id == opordel && !t.instance.compare(":"))
       {
         root.insert(t);
         t = scan(in);
 
-        if(t.id == integer)
+        if(t.id == opordel && !t.instance.compare("=")
         {
           root.insert(t);
-          t = scan(in);
-          root.insert(Vars());
-          return root;
+          t = scan(in)
+
+          if(t.id == integer)
+          {
+            root.insert(t);
+            t = scan(in);
+            root.insert(Vars());
+            return root;
+          }
+          parseErr("numTK");
         }
-        parseErr("numTK");
+        parseErr("opTK: '='");
       }
-      parseErr("opTK: ':='");
+      parseErr("opTK: ':'");
     }
     parseErr("idTK");
   }
