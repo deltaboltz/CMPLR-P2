@@ -1,3 +1,10 @@
+/*
+* By: Connor Schultz
+* Date Made: 04/03/2021
+* Files Needed: any file with extension .sp21
+* Made For: CS-4280 (Program Translation Project) @ UMSL
+*/
+
 #include <iostream>
 #include <string>
 #include <fstream>
