@@ -322,6 +322,7 @@ static node<std::string> In()
       {
         root.insert(t);
         t = scan(in);
+        cout << "test inside" << endl;
         return root;
       }
       parseErr("opTK: ';'");
@@ -338,6 +339,7 @@ static node<std::string> Out()
 
   if(t.id == keyword && !t.instance.compare("outter"))
   {
+    cout << "test outside" << endl;
     root.insert(t);
     t = scan(in);
     root.insert(Expr());
