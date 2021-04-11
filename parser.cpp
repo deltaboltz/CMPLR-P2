@@ -9,7 +9,7 @@ using namespace std;
 
 static token t;
 static std::istream in(NULL);
-void parseErr(std::string expected);
+static void parseErr(std::string expected);
 
 static node<std::string> Program();
 static node<std::string> Block();
@@ -502,7 +502,7 @@ static node<std::string> Goto()
 {
   node<std::string> root("<goto>");
 
-  if(t.id == keywork && !t.instance.compare("proc"))
+  if(t.id == keyword && !t.instance.compare("proc"))
   {
     root.insert(t);
 
