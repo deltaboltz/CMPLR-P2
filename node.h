@@ -80,12 +80,6 @@ void node<T>::preHelp(std::ostream& out, std::string indent)
 
 }
 
-template <class T>
-node<T>::node()
-{
-  set = false;
-}
-
 // Each traversal has a standard cout stream as well as an
 // overloaded function for ostream
 template <class T>
