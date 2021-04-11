@@ -58,7 +58,7 @@ static node<std::string> Program()
 
 static node<std::string> Block()
 {
-  node<std::string root("<block>");
+  node<std::string> root("<block>");
 
   if(t.id == keyword && !t.instance.compare("begin"))
   {
