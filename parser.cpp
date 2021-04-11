@@ -387,7 +387,7 @@ static node<std::string> Loop()
       root.insert(R0());
       root.insert(Expr());
 
-      if(t.id = opordel && !t.instance.compare("]"))
+      if(t.id == opordel && !t.instance.compare("]"))
       {
         root.insert(t);
         t = scan(in);
@@ -437,7 +437,7 @@ static node<std::string> R0()
     if(t.id == opordel && !t.instance.compare("]"))
     {
       root.insert(t);
-      t = scan(in)
+      t = scan(in);
       return root;
     }
     parseErr("opTK: ']'");
@@ -468,7 +468,7 @@ static node<std::string> R0()
     else if(t.id == opordel && !t.instance.compare("="))
     {
       root.insert(t);
-      t = scan(in)
+      t = scan(in);
       return root;
     }
   }
@@ -502,7 +502,7 @@ static node<std::string> Goto()
 {
   node<std::string> root("<goto>");
 
-  if(t.id = keywork && !t.instance.compare("proc"))
+  if(t.id == keywork && !t.instance.compare("proc"))
   {
     root.insert(t);
 
