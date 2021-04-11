@@ -309,7 +309,7 @@ static node<std::string> In()
 {
   node<std::string> root("<in>");
 
-  if(t.id == keyword && !t.instance.compare("in"))
+  if(t.id == keyword && !t.instance.compare("getter"))
   {
     root.insert(t);
     t = scan(in);
@@ -322,7 +322,7 @@ static node<std::string> In()
     }
     parseErr("idTK");
   }
-  parseErr("kwTK: 'in'");
+  parseErr("kwTK: 'getter'");
   return root;
 }
 
