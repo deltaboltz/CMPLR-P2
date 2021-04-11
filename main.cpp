@@ -57,5 +57,6 @@ int main(int argc, char* argv[])
     return 2;
   }
 
+  cout << "finished processing" << endl;
   return 0;
 }

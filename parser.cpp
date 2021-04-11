@@ -78,7 +78,6 @@ static node<std::string> Block()
     {
       root.insert(t);
       t = scan(in);
-      cout << "project done" << endl;
       return root;
     }
     parseErr("kwTK: 'end'");
