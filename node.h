@@ -26,11 +26,6 @@ public:
   void preOrder(std::ostream& out);
 };
 
-template <class T>
-node<T>::node(T key)
-{
-  keyT = key;
-}
 
 template <class T>
 std::string node<T>::toString()
@@ -54,6 +49,13 @@ std::string node<T>::toString()
 }
 
 template <class T>
+node<T>::node(T key)
+{
+  keyT = key;
+}
+
+
+template <class T>
 void node<T>::insert(node<T> child)
 {
   childrenT.push_back(child);
@@ -62,7 +64,7 @@ void node<T>::insert(node<T> child)
 template <class T>
 void node<T>::insert(token childToken)
 {
-  tokensT.push_back(childToken);
+    tokensT.push_back(childToken);
 }
 
 template <class T>
