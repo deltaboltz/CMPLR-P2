@@ -2,6 +2,6 @@
 #define SCANNER_H
 #include "token.h"
 
-token scan(std::istream& in, int lineNum, int charNum);
+token scan(std::istream& in);
 
 #endif
