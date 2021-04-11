@@ -76,6 +76,7 @@ static node<std::string> Block()
 
     if(t.id == keyword && !t.instance.compare("end"))
     {
+      cout << "test end" << endl;
       root.insert(t);
       t = scan(in);
       return root;
@@ -339,7 +340,6 @@ static node<std::string> Out()
 
   if(t.id == keyword && !t.instance.compare("outter"))
   {
-    cout << "test outside" << endl;
     root.insert(t);
     t = scan(in);
     root.insert(Expr());
