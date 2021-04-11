@@ -114,6 +114,12 @@ static node<std::string> Vars()
             root.insert(t);
             t = scan(in);
             root.insert(Vars());
+            if(t.id == opordel && !t.instance.compare(";"))
+            {
+              root.insert(t);
+              t = scan(in);
+              return root;
+            }
             return root;
           }
           parseErr("numTK");
