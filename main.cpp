@@ -18,6 +18,7 @@ int main(int argc, char* argv[])
   if(argc == 1)
   {
     node<std::string> root = parser(cin);
+    root.preOrder();
   }
   else if(argc == 2) //check to see if the file has the proper extension
   {
@@ -44,6 +45,7 @@ int main(int argc, char* argv[])
     if(fs)
     {
       node<std::string> root = parser(fs);
+      root.preOrder();
     }
     else
     {
