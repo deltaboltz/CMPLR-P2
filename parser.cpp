@@ -493,6 +493,7 @@ static node<std::string> Assign()
   parseErr("idTK");
   }
   parseErr("kwTK: 'assign'");
+  return root;
 }
 
 static node<std::string> R0()
