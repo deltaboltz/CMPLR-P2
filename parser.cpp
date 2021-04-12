@@ -50,6 +50,7 @@ static node<std::string> Program()
 {
   node<std::string> root("<program>");
 
+  cout << "test5-1" << endl;
   root.insert(Vars());
 
   if(t.id == keyword && !t.instance.compare("main"))
@@ -58,6 +59,7 @@ static node<std::string> Program()
     t = scan(in);
     root.insert(Block());
   }
+  parseErr("kwTK: 'main'");
 
   return root;
 }
@@ -113,11 +115,11 @@ static node<std::string> Vars()
           {
             root.insert(t);
             t = scan(in);
-            root.insert(Vars());
             if(t.id == opordel && !t.instance.compare(";"))
             {
               root.insert(t);
               t = scan(in);
+              root.insert(Vars());
               return root;
             }
             return root;
