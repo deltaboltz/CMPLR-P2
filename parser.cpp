@@ -335,7 +335,7 @@ static node<std::string> Stat()
     }
     return root;
   }
-  else if(t.id == keyword && !t.instance.compare("goto"))
+  else if(t.id == keyword && !t.instance.compare("proc"))
   {
     root.insert(Goto());
     if(t.id == opordel && !t.instance.compare(";"))
