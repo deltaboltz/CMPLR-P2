@@ -468,28 +468,34 @@ static node<std::string> Assign()
 {
   node<std::string> root("<assign>");
 
-  if(t.id == identifier)
+  if(t.id == keyword && !t.instance.compare("assign"))
   {
     root.insert(t);
     t = scan(in);
-
-    if(t.id == opordel && !t.instance.compare(":"))
+    
+    if(t.id == identifier)
     {
       root.insert(t);
       t = scan(in);
-      if(t.id == opordel && !t.instance.compare("="))
+
+      if(t.id == opordel && !t.instance.compare(":"))
       {
         root.insert(t);
         t = scan(in);
-        root.insert(Expr());
-        return root;
+        if(t.id == opordel && !t.instance.compare("="))
+        {
+          root.insert(t);
+          t = scan(in);
+          root.insert(Expr());
+          return root;
+        }
+        parseErr("opTK: '='");
       }
-      parseErr("opTK: '='");
+      parseErr("opTK: ':'");
     }
-    parseErr("opTK: ':'");
-  }
   parseErr("idTK");
-  return root;
+  }
+  parseErr("kwTK: 'assign'");
 }
 
 static node<std::string> R0()
