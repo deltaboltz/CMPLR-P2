@@ -484,7 +484,7 @@ static node<std::string> Assign()
           root.insert(t);
           t = scan(in);
           
-          root.insert(Stat());
+          root.insert(Expr());
           cout << "test1" << endl;
           return root;
         }
