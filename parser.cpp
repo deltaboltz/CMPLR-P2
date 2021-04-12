@@ -297,7 +297,7 @@ static node<std::string> Stat()
     }
     return root;
   }
-  else if(t.id == keyword && !t.instance.compare("block"))
+  else if(t.id == keyword && !t.instance.compare("begin"))
   {
     root.insert(Block());
     return root;
