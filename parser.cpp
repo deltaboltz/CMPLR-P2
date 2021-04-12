@@ -472,14 +472,20 @@ static node<std::string> Assign()
     root.insert(t);
     t = scan(in);
 
-    if(t.id == opordel && !t.instance.compare(":="))
+    if(t.id == opordel && !t.instance.compare(":"))
     {
       root.insert(t);
       t = scan(in);
-      root.insert(Expr());
-      return root;
+      if(t.id == opordel && !t.instance.compare("="))
+      {
+        root.insert(t);
+        t = scan(in);
+        root.insert(Expr());
+        return root;
+      }
+      parseErr("opTK: '='");
     }
-    parseErr("opTK: ':='");
+    parseErr("opTK: ':'");
   }
   parseErr("idTK");
   return root;
@@ -489,27 +495,8 @@ static node<std::string> R0()
 {
   node<std::string> root("<R0>");
 
-  if(t.id == opordel && !t.instance.compare("["))
-  {
-    root.insert(t);
-    t = scan(in);
-
-    if(t.id == opordel && !t.instance.compare("]"))
-    {
-      root.insert(t);
-      t = scan(in);
-      return root;
-    }
-    parseErr("opTK: ']'");
-  }
-  else if(t.id == opordel && !t.instance.compare("%"))
-  {
-    root.insert(t);
-    t = scan(in);
-    return root;
-  }
-  else if(t.id == opordel && !t.instance.compare("="))
-  {
+   if(t.id == opordel && !t.instance.compare("="))
+   {
     root.insert(t);
     t = scan(in);
 
@@ -532,6 +519,38 @@ static node<std::string> R0()
       return root;
     }
   }
+  else if(t.id == opordel && !t.instance.compare("["))
+  {
+    root.insert(t);
+    t = scan(in);
+    
+    if(t.id == opordel && !t.instance.comapre("="))
+    {
+      root.insert(t);
+      t = scan(in);
+      
+      if(t.id == opordel && !t.instance.comapre("="))
+      {
+        root.insert(t);
+        t = scan(in);
+      }
+    }
+    
+    if(t.id == opordel && !t.instance.compare("]"))
+    {
+      root.insert(t);
+      t = scan(in);
+      return root;
+    }
+    parseErr("opTK: ']'");
+  }
+  else if(t.id == opordel && !t.instance.compare("%"))
+  {
+    root.insert(t);
+    t = scan(in);
+    return root;
+  }
+
   parseErr("opTK: '=', '<', '>', '%'");
   return root;
 }
