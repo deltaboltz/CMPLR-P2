@@ -440,13 +440,12 @@ static node<std::string> Loop()
 
     if(t.id == opordel && !t.instance.compare("["))
     {
-
+      root.insert(t);
+      t = scan(in);
       root.insert(Expr());
       root.insert(R0());
       root.insert(Expr());
-
-      root.insert(t);
-      t = scan(in);
+      
       if(t.id == opordel && !t.instance.compare("]"))
       {
         root.insert(t);
