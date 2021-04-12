@@ -451,8 +451,8 @@ static node<std::string> Loop()
       {
         root.insert(t);
         t = scan(in);
+        root.insert(Stat());
       }
-      root.insert(Expr());
       parseErr("opTK: ']'");
     }
     parseErr("opTK: '['");
