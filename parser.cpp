@@ -50,7 +50,6 @@ static node<std::string> Program()
 {
   node<std::string> root("<program>");
 
-  cout << "test5-1" << endl;
   root.insert(Vars());
 
   if(t.id == keyword && !t.instance.compare("main"))
@@ -90,6 +89,7 @@ static node<std::string> Block()
 
 static node<std::string> Vars()
 {
+  cout << "test 6-1" << endl;
   node<std::string> root("<vars>");
 
   if(t.id == keyword && !t.instance.compare("data"))
@@ -119,9 +119,9 @@ static node<std::string> Vars()
             {
               root.insert(t);
               t = scan(in);
-              root.insert(Vars());
-              return root;
             }
+             root.insert(Vars());
+             return root;
             parseErr("opTK: ';'");
           }
           parseErr("numTK");
