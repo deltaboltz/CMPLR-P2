@@ -524,12 +524,12 @@ static node<std::string> R0()
     root.insert(t);
     t = scan(in);
     
-    if(t.id == opordel && !t.instance.comapre("="))
+    if(t.id == opordel && !t.instance.compare("="))
     {
       root.insert(t);
       t = scan(in);
       
-      if(t.id == opordel && !t.instance.comapre("="))
+      if(t.id == opordel && !t.instance.compare("="))
       {
         root.insert(t);
         t = scan(in);
