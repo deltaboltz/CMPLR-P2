@@ -483,8 +483,9 @@ static node<std::string> Assign()
         {
           root.insert(t);
           t = scan(in);
-          cout << "test1" << endl;
+          
           root.insert(Expr());
+          cout << "test1" << endl;
           return root;
         }
         parseErr("opTK: '='");
