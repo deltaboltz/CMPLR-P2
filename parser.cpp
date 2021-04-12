@@ -122,7 +122,7 @@ static node<std::string> Vars()
               root.insert(Vars());
               return root;
             }
-            return root;
+            parseErr("opTK: ';'");
           }
           parseErr("numTK");
         }
