@@ -119,9 +119,9 @@ static node<std::string> Vars()
             {
               root.insert(t);
               t = scan(in);
+              root.insert(Vars());
+              return root;
             }
-             root.insert(Vars());
-             return root;
             parseErr("opTK: ';'");
           }
           parseErr("numTK");
