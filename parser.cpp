@@ -51,6 +51,9 @@ static node<std::string> Program()
   node<std::string> root("<program>");
 
   root.insert(Vars());
+  
+  root.insert(t);
+  t = scan(in);
 
   if(t.id == keyword && !t.instance.compare("main"))
   {
