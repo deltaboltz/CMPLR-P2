@@ -445,7 +445,6 @@ static node<std::string> Loop()
 
       root.insert(Expr());
       root.insert(R0());
-      cout << "test2" << endl;
       root.insert(Expr());
 
       if(t.id == opordel && !t.instance.compare("]"))
@@ -456,6 +455,7 @@ static node<std::string> Loop()
         root.insert(Stat());
         return root;
       }
+      root.insert(Expr());
       parseErr("opTK: ']'");
     }
     parseErr("opTK: '['");
