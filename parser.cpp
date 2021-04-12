@@ -500,7 +500,6 @@ static node<std::string> R0()
    {
     root.insert(t);
     t = scan(in);
-     cout << "test1" << endl;
     if(t.id == opordel && !t.instance.compare(">"))
     {
       root.insert(t);
