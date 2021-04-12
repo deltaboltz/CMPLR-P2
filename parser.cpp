@@ -450,9 +450,9 @@ static node<std::string> Loop()
       {
         root.insert(t);
         t = scan(in);
-        return root;
       }
       root.insert(Stat());
+      return root;
       parseErr("opTK: ']'");
     }
     parseErr("opTK: '['");
